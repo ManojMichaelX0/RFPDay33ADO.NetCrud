@@ -27,10 +27,9 @@ namespace Sql_and_Ado.Net
             employee.Country = "India";
 
             //repo.AddEmployee(employee);
-            //employee.EmployeeName = "Terisa";
-            //employee.BasicPay = 3000000.00;
             //repo.Update(employee);
-            repo.GetAllEmployee();
+            repo.Retrieve(employee);
+            //repo.GetAllEmployee();
 
 
 

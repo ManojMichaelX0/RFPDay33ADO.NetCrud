@@ -111,7 +111,7 @@ namespace Sql_and_Ado.Net
                 throw new Exception(ex.Message); 
             }
         }
-        //UC-3 
+        //UC - 3 and 4 
         public void Update(EmployeeModel model)
         {
             string query = @"Update Employee_payroll Set BasicPay=3000000.00 Where EmployeeName='Terisa'";
@@ -130,10 +130,43 @@ namespace Sql_and_Ado.Net
 
                     Console.WriteLine("{0},{1},{2},{3},{4},{5},{6}", employeeModel.EmployeeID, employeeModel.EmployeeName, employeeModel.PhoneNumber, employeeModel.Address, employeeModel.Department, employeeModel.Gender, employeeModel.BasicPay);
                     Console.WriteLine("\n");
-
-
                 }
             }
+
+        }
+        //UC - 5
+        public void Retrieve(EmployeeModel model)
+        {
+            string query = @"Select * From Employee_payroll Where StartDate Between '1894-06-23' And '2022-04-07'";
+            SqlCommand cmd = new SqlCommand(query, this.connection);
+            this.connection.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            EmployeeModel employeeModel = new EmployeeModel();
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    employeeModel.EmployeeID = dr.GetInt32(0);
+                    employeeModel.EmployeeName = dr.GetString(1);
+                    employeeModel.PhoneNumber = dr.GetString(2);
+                    employeeModel.Address = dr.GetString(3);
+                    employeeModel.Department = dr.GetString(4);
+                    employeeModel.Gender = Convert.ToChar(dr.GetString(5));
+                    employeeModel.BasicPay = dr.GetDouble(6);
+                    employeeModel.Deductions = dr.GetDouble(7);
+                    employeeModel.TaxablePay = dr.GetDouble(8);
+                    employeeModel.Tax = dr.GetDouble(9);
+                    employeeModel.NetPay = dr.GetDouble(10);
+                    employeeModel.StartDate = dr.GetDateTime(11);
+                    employeeModel.City = dr.GetString(12);
+                    employeeModel.Country = dr.GetString(13);
+                    //display retieved record
+
+                    Console.WriteLine("{0},{1},{2},{3},{4},{5},{6}", employeeModel.EmployeeID, employeeModel.EmployeeName, employeeModel.PhoneNumber, employeeModel.Address, employeeModel.Department, employeeModel.Gender, employeeModel.BasicPay);
+                    Console.WriteLine("\n");
+                }
+            }
+            this.connection.Close();
 
         }
 
