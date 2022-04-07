@@ -28,12 +28,9 @@ namespace Sql_and_Ado.Net
 
             //repo.AddEmployee(employee);
             //repo.Update(employee);
-            repo.Retrieve(employee);
+            //repo.Retrieve(employee);
+            repo.Aggregate(employee);
             //repo.GetAllEmployee();
-
-
-
-
         }
     }
 }
