@@ -26,11 +26,10 @@ namespace Sql_and_Ado.Net
             employee.City = "Kazipet";
             employee.Country = "India";
 
-            //repo.AddEmployee(employee);
-            //employee.EmployeeName = "Terisa";
-            //employee.BasicPay = 3000000.00;
-            //repo.Update(employee);
-            repo.GetAllEmployee();
+             //repo.AddEmployee(employee);
+            repo.Update(employee);
+            //repo.GetAllEmployee();
+            
 
 
 
